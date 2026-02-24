@@ -2,32 +2,32 @@
 
 ### ✅ UC1
 
-Implemented basic equality comparison for length measurements using value-based comparison (e.g., 12 inches = 1 foot).
+Implemented value-based equality comparison for Feet objects only, comparing measurements using overridden equals() and hashCode().
 
 ### ✅ UC2
 
-Added support for comparing different units of length by converting values to a common base unit before equality check.
+Extended equality comparison to support both Feet and Inches, enabling cross-unit comparison (e.g., 12 inches = 1 foot).
 
 ### ✅ UC3
 
-Introduced additional length units (inches, feet, yards, centimeters) with proper conversion factors.
+Enabled comparison between different length units by converting values to a common base unit before checking equality.
 
 ### ✅ UC4
 
-Implemented unit-to-unit conversion functionality allowing a quantity to be converted to any other compatible unit.
+Added support for multiple length units such as inches, feet, yards, and centimeters with defined conversion factors.
 
 ### ✅ UC5
 
-Added addition operation for same-unit quantities while maintaining immutability.
+Implemented unit conversion functionality to convert values between supported length units.
 
 ### ✅ UC6
 
-Extended addition to support different units by converting both operands to a common base unit before summation.
+Added addition functionality for quantities of the same unit while maintaining immutability.
 
 ### ✅ UC7
 
-Improved design by ensuring immutability, constructor validation, and proper overriding of equals() and hashCode().
+Enhanced addition to support different units by converting values to a common base unit before summation.
 
 ### ✅ UC8
 
-Enhanced system robustness with rounding precision handling and comprehensive unit conversion validation across all length combinations.
+Improved design by enforcing constructor validation, immutability, and correct implementation of equals() and hashCode().
