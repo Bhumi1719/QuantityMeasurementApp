@@ -4,4 +4,3 @@ package com.example.QuantityApp;
 public interface SupportsArithmetic {
     boolean isSupported();
 }
-
