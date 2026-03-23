@@ -2,21 +2,25 @@ package com.example.QuantityApp;
 
 public enum LengthUnit10 implements IMeasurable {
 
-    FEET(12),
-    INCHES(1),
-    YARD(36);
+    FEET(0.3048),
+    INCHES(0.0254),
+    YARDS(0.9144),
+    CENTIMETERS(0.01);
 
-    private final double factor;
+    private final double conversionFactor;
 
-    LengthUnit10(double factor) {
-        this.factor = factor;
+    LengthUnit10(double conversionFactor) {
+        this.conversionFactor = conversionFactor;
     }
 
+    @Override
     public double getConversionFactor() {
-        return factor;
+        return conversionFactor;
     }
 
+    @Override
     public String getUnitName() {
         return name();
     }
 }
+

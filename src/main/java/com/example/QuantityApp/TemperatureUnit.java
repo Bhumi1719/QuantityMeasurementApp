@@ -1,5 +1,7 @@
 package com.example.QuantityApp;
 
+import java.util.function.Function;
+
 public enum TemperatureUnit implements IMeasurable {
 
     CELSIUS,
@@ -7,7 +9,7 @@ public enum TemperatureUnit implements IMeasurable {
 
     @Override
     public double getConversionFactor() {
-        return 1; // not used
+        return 1; 
     }
 
     @Override
