@@ -1,6 +1,7 @@
 package com.example.QuantityApp;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FeetInchesTest {
@@ -62,4 +63,3 @@ public class FeetInchesTest {
         assertFalse(i.equals("invalid"));
     }
 }
-
