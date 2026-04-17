@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
@@ -11,7 +11,7 @@ spring:
         cors-configurations:
           '[/**]':
             allowedOrigins:
-              - "http://localhost:4200"
+              - "${FRONTEND_URL:http://localhost:4200}"
             allowedMethods:
               - GET
               - POST
@@ -26,26 +26,20 @@ spring:
       routes:
         # Auth Service Routes
         - id: auth-service
-          uri: lb://auth-service
+          uri: ${AUTH_SERVICE_URL}
           predicates:
             - Path=/api/v1/auth/**
-          filters:
-            - RewritePath=/api/v1/auth/(?<segment>.*), /api/v1/auth/$\{segment}
 
         # Quantity Service Routes
         - id: quantity-service
-          uri: lb://quantity-service
+          uri: ${QUANTITY_SERVICE_URL}
           predicates:
             - Path=/api/v1/quantities/**
-          filters:
-            - RewritePath=/api/v1/quantities/(?<segment>.*), /api/v1/quantities/$\{segment}
 
+# Eureka disabled — direct URL routing
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
+    enabled: false
 
 management:
   endpoints:

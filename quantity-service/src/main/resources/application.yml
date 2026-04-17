@@ -1,33 +1,31 @@
 server:
-  port: 8082
+  port: ${PORT:8082}
 
 spring:
   application:
     name: quantity-service
 
   datasource:
-    url: jdbc:mysql://localhost:3306/quantity_db?createDatabaseIfNotExist=true
-    username: root
-    password: Bhumi#1705
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
+# Eureka disabled — Render pe direct URL routing use hoga
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
+    enabled: false
 
 jwt:
-  secret: qmsMicroservicesSecretKeyForJwtToken2024VeryLongSecretKey
+  secret: ${JWT_SECRET}
 
 management:
   endpoints:
