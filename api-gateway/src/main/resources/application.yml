@@ -12,6 +12,7 @@ spring:
           '[/**]':
             allowedOrigins:
               - "${FRONTEND_URL:http://localhost:4200}"
+              - "http://localhost:4200"
             allowedMethods:
               - GET
               - POST
@@ -24,25 +25,19 @@ spring:
             maxAge: 3600
 
       routes:
-        # Auth Service Routes
         - id: auth-service
-          uri: ${AUTH_SERVICE_URL}
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
           predicates:
             - Path=/api/v1/auth/**
 
-        # Quantity Service Routes
         - id: quantity-service
-          uri: ${QUANTITY_SERVICE_URL}
+          uri: ${QUANTITY_SERVICE_URL:http://localhost:8082}
           predicates:
             - Path=/api/v1/quantities/**
 
-# Eureka disabled — direct URL routing
+  # Eureka disable
+  cloud.discovery.enabled: false
+
 eureka:
   client:
     enabled: false
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
