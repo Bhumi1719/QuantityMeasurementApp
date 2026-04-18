@@ -1,14 +1,14 @@
 server:
-  port: ${PORT:8081}
+  port: ${SERVER_PORT:8081}
 
 spring:
   application:
     name: auth-service
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: ${DB_URL:jdbc:mysql://localhost:3306/auth_db?createDatabaseIfNotExist=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:Bhumi#1705}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -19,14 +19,13 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
-  # Eureka disable - Render par direct URL use karenge
-  cloud:
-    discovery:
-      enabled: false
-
 eureka:
   client:
-    enabled: false
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+    hostname: ${HOSTNAME:localhost}
 
 jwt:
   secret: ${JWT_SECRET:qmsMicroservicesSecretKeyForJwtToken2024VeryLongSecretKey}
