@@ -6,8 +6,8 @@ spring:
     name: auth-service
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslMode=REQUIRED&useSSL=true
+    username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
@@ -19,11 +19,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
-# Eureka disabled — Render pe direct URL routing use hoga
+  # Eureka disable - Render par direct URL use karenge
+  cloud:
+    discovery:
+      enabled: false
+
 eureka:
   client:
     enabled: false
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:qmsMicroservicesSecretKeyForJwtToken2024VeryLongSecretKey}
   expiration: 86400000
